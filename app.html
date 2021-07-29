@@ -2,8 +2,8 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Shawn Rogoff</title>
-    <link rel="shortcut icon" type="image/jpg" href="/img/ShawnRogoffFavicon.ico"/>
+    <title>Custom Jewelry Pricing: A Coding Project By Shawn Rogoff</title>
+    <link rel="shortcut icon" type="image/jpg" href="/img/ShawnRogoffFavicon2.ico"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,7 +28,7 @@
     <!-- Nav Section -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand logoFont"><img src="/img/ShawnRogoffMarkLight.png" class="d-inline-block align-text-top" width="30" height="24"> App Name</a>
+            <a class="navbar-brand logoFont"><img src="/img/ShawnRogoffMark2Light.png" class="d-inline-block align-text-top" width="30" height="24"> Custom Jewelry Pricing</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
                         <a class="nav-link" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/shawnrogoff/CustomJewelryPricingApp">Git Repo</a>
                         <!-- put github link in the above href -->
                     </li>
                     <li class="nav-item">
@@ -59,17 +59,154 @@
     <!-- Main Section -->
     <main class="flex-shrink-0">
         <div class="container mt-5">
-            <div class="col col-lg-6 border-end border-2">
-                <h1 class="logoFont display-5 1h-1 mb-3">APP NAME: A Coding Project</h1>
-                <h4 class="lead pb-3">
-                    Challenge Text
-                </h4>
-                <h2 class="mt-5 border-bottom border-2">Instructions</h2>
-                <!-- Instructions to use application -->
-                <p>instruction here</p>
-            </div>
-            <div class="col col-lg-6">
-                
+            <div class="row row-cols-1 row-cols-md-2 ">
+                <div class="col col-lg-4 border-end border-2">
+                    <h1 class="logoFont display-5 1h-1 mb-3">Custom Jewelry Pricing: A Coding Project</h1>
+                    <h4 class="lead">
+                        Write a program to allow a jewelry store employee to provide a rough estimate to clients 
+                        for custom designed jewelry pieces.
+                    </h4>
+                </div>
+                <!-- Application Section -->
+                <div class="col col-lg-8">
+                    <div id="config" class="d-flex row row-cols-1 row-cols-md-2">
+                        <div class="col-xs-6 text-left">
+                            <div class="previous">
+                                <button id="btnToggleConfig" title="Show configuration options" type="button" class="btn btn-dark btn-lg" ><i class="fas fa-cog"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 text-right">   
+                            <div class="next">
+                                <button id="btnToggleMeleePricing" title="Show Melee Pricing" type="button" class="btn btn-dark btn-lg" >Price Melee Diamonds</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="configMenu" class=" col-12 col-md-6 m-2 invisible">
+                        <form>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <div class="input-group mb-2 mt-1">
+                                        <span class="input-group-text" id="basic-addon1">melee prong setting</span>
+                                        <input type="text" class="form-control text-end" placeholder="5" aria-label="melee prong setting fee" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text" id="basic-addon1">melee channel setting</span>
+                                        <input type="text" class="form-control text-end" placeholder="8" aria-label="melee channel setting fee" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1">melee flat setting</span>
+                                        <input type="text" class="form-control text-end" placeholder="10" aria-label="melee flat setting fee" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-2 mt-1">
+                                        <span class="input-group-text" id="basic-addon1">rhodium plating</span>
+                                        <input type="text" class="form-control text-end" placeholder="35" aria-label="melee prong setting fee" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text" id="basic-addon1">3D scan ring</span>
+                                        <input type="text" class="form-control text-end" placeholder="100" aria-label="scan ring" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1">3D scan stone</span>
+                                        <input type="text" class="form-control text-end" placeholder="70" aria-label="scan stone" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex align-content-center justify-content-center justify-content-md-end">
+                                    <button id="btnResetSettingsConfig" type="submit" class="btn btn-outline-primary mt-2 mb-2 mx-3">Reset</button>
+                                    <button id="btnUseSettingsConfig" type="submit" class="btn btn-primary mt-2 mb-2">Use Settings</button>
+                                </div>
+                            </div>                                
+                        </form>  
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="container">
+                        <h1 class="text-center mb-3">Price Estimator</h1>
+                        <form action="#">
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <label class="form-label">Metal Selection</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="10k White Gold">10k White Gold</option>
+                                        <option value="10k Yellow Gold">10k Yellow Gold</option>
+                                        <option value="10k Rose Gold">10k Rose Gold</option>
+                                        <option value="14k White Gold">14k White Gold</option>
+                                        <option value="14k Yellow Gold">14k Yellow Gold</option>
+                                        <option value="14k Rose Gold">14k Rose Gold</option>
+                                        <option value="18k White Gold">18k White Gold</option>
+                                        <option value="18k Yellow Gold">18k Yellow Gold</option>
+                                        <option value="18k Rose Gold">18k Rose Gold</option>
+                                        <option value="Platinum">Platinum</option>
+                                        <option value="Sterling Silver">Sterling Silver</option>
+                                      </select>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Metal Spot Price</label>
+                                    <input type="number" name="spotPrice" class="form-control" placeholder="1850"
+                                        aria-label="metal spot price" required>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <label class="form-label">Metal Weight</label>
+                                    <input type="number" name="metal weight" class="form-control" placeholder="5.0"
+                                        aria-label="metal weight" required>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Number of Pieces</label>
+                                    <input type="number" name="numberOfPieces" class="form-control" placeholder="1"
+                                        aria-label="number of pieces">
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <label class="form-label">Number of melee stones</label>
+                                    <input type="number" name="melee stone count" class="form-control" placeholder="5.0"
+                                        aria-label="melee stone count" required>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Number of Pieces</label>
+                                    <input type="number" name="numberOfPieces" class="form-control" placeholder="1"
+                                        aria-label="number of pieces">
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <label class="form-label">Metal Weight</label>
+                                    <input type="number" name="metal weight" class="form-control" placeholder="5.0"
+                                        aria-label="metal weight" required>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Number of Pieces</label>
+                                    <input type="number" name="numberOfPieces" class="form-control" placeholder="1"
+                                        aria-label="number of pieces">
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <label class="form-label">Metal Weight</label>
+                                    <input type="number" name="metal weight" class="form-control" placeholder="5.0"
+                                        aria-label="metal weight" required>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Number of Pieces</label>
+                                    <input type="number" name="numberOfPieces" class="form-control" placeholder="1"
+                                        aria-label="number of pieces">
+                                </div>
+                            </div>
+                            
+
+                            
+                            
+                            <button type="submit" class="btn btn-primary mt-2">Get Quote</button>
+                        </form>
+
+
+
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -101,5 +238,8 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="/js/site.js"></script>
+    <script>
+        document.getElementById("btnToggleConfig").addEventListener("click",toggleConfig);
+    </script>
 </body>
 </html>

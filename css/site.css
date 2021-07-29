@@ -4,6 +4,18 @@
     --dark-color: #292929;
     --white-color: #dfe9f3;
 }
+/* === CSS for this specific project === */
+.invisible{
+    display: none;
+}
+
+
+
+
+
+
+
+
 
 /* === Google Fonts === */
 .logoFont{
