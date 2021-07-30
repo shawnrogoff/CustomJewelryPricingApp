@@ -69,8 +69,13 @@
                         <div class="col-4 col-md-8">
                         </div>
                         <div class="d-flex col-4 col-md-2 justify-content-end">
-                            <div class="previous">
-                                <button id="btnToggleConfig" title="Show configuration options" type="button" class="btn btn-dark btn-lg justify-content-end" ><i class="fas fa-bars"></i></button>
+                            <div>
+                                <button id="btnToggleExtraOptions" title="Show other options" type="button" class="btn btn-dark dropdown-toggle btn-lg justify-content-end" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                <ul class="dropdown-menu" aria-labelledby="btnToggleExtraOptions">
+                                    <li><span><button id="btnToggleMeleePricing" title="Show melee pricing card" type="button" class="btn btn-lg" >Melee Pricing Help</button></span></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><span><button id="btnToggleCustomerGold" title="Show melee pricing card" type="button" class="btn btn-lg" >Use Customer Gold</button></span></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -264,8 +269,8 @@
                     </form>
                     <hr class="bg-danger border-3 border-top border-primary">
                     <!-- === Display Results === -->
-                    <!-- invisible -->
-                    <div class="alert alert-danger mt-5 fade show" id="alert" role="alert">
+                    <!--  -->
+                    <div class="alert alert-danger fade show invisible" id="alert" role="alert">
                         <h4 id="alertHeading" class="alert-heading">
                             <div class="row mb-2">
                                 <div class="col-md-4"></div>
@@ -354,7 +359,9 @@
     <script>
         document.getElementById("btnToggleConfig").addEventListener("click",toggleConfig);
         document.getElementById("btnQuote").addEventListener("click", getValues);
-        document.getElementById("btnResetForm").addEventListener("click", resetForm);
+        document.getElementById("btnReset").addEventListener("click", resetForm);
+        document.getElementById("btnToggleMeleePricing").addEventListener("click", toggleMeleePricing);
+        document.getElementById("btnToggleCustomerGold").addEventListener("click", toggleCustomerGold);
     </script>
 </body>
 </html>
