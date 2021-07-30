@@ -59,6 +59,7 @@
     <!-- Main Section -->
     <main class="flex-shrink-0">
         <div class="container mt-2">
+            <!-- === Top Application Buttons === -->
                 <div class="col">
                     <div id="config" class="d-flex row row-cols-1 row-cols-md-2">
                         <div class="d-flex col-4 col-md-2">
@@ -74,7 +75,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="btnToggleExtraOptions">
                                     <li><span><button id="btnToggleMeleePricing" title="Show melee pricing card" type="button" class="btn btn-lg" >Melee Pricing Help</button></span></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><span><button id="btnToggleCustomerGold" title="Show melee pricing card" type="button" class="btn btn-lg" >Use Customer Gold</button></span></li>
+                                    <li><span><button id="btnToggleCustomerGold" title="Show customer version" type="button" class="btn btn-lg" >Use Customer Gold</button></span></li>
                                 </ul>
                             </div>
                         </div>
@@ -85,35 +86,36 @@
                             <div class="row">
                                 <div class="col text-center">
                                     <div class="input-group mb-2 mt-1">
-                                        <span class="input-group-text" id="basic-addon1">melee prong setting</span>
-                                        <input type="text" class="form-control text-end" placeholder="5" aria-label="melee prong setting fee" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">melee prong setting</span>
+                                        <input id="meleeProngSettingFee" type="text" class="form-control text-end" placeholder="5" aria-label="melee prong setting fee" aria-describedby="basic-addon1" value="5">
                                     </div>
                                     <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addon1">melee channel setting</span>
-                                        <input type="text" class="form-control text-end" placeholder="8" aria-label="melee channel setting fee" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">melee channel setting</span>
+                                        <input id="meleeChannelBezelSettingFee" type="text" class="form-control text-end" placeholder="8" aria-label="melee channel setting fee" aria-describedby="basic-addon1" value="8">
                                     </div>
                                     <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon1">melee flat setting</span>
-                                        <input type="text" class="form-control text-end" placeholder="10" aria-label="melee flat setting fee" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">melee flat setting</span>
+                                        <input id="meleeFlatSettingFee" type="text" class="form-control text-end" placeholder="10" aria-label="melee flat setting fee" aria-describedby="basic-addon1" value="10">
                                     </div>
                                     <div class="input-group mb-2 mt-1">
-                                        <span class="input-group-text" id="basic-addon1">rhodium plating</span>
-                                        <input type="text" class="form-control text-end" placeholder="35" aria-label="melee prong setting fee" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">rhodium plating</span>
+                                        <input id="rhodiumPlatingFee" type="text" class="form-control text-end" placeholder="35" aria-label="melee prong setting fee" aria-describedby="basic-addon1" value="35">
                                     </div>
                                     <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addon1">3D scan ring</span>
-                                        <input type="text" class="form-control text-end" placeholder="100" aria-label="scan ring" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">3D scan ring</span>
+                                        <input id="ringScanFee" type="text" class="form-control text-end" placeholder="100" aria-label="scan ring" aria-describedby="basic-addon1" value="100">
                                     </div>
                                     <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon1">3D scan stone</span>
-                                        <input type="text" class="form-control text-end" placeholder="70" aria-label="scan stone" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">3D scan stone</span>
+                                        <input id="stoneScanFee" type="text" class="form-control text-end" placeholder="70" aria-label="scan stone" aria-describedby="basic-addon1" value="70">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col d-flex align-content-center justify-content-center justify-content-md-end">
-                                    <button id="btnResetSettingsConfig" type="submit" class="btn btn-outline-primary mt-2 mb-2 mx-3">Reset</button>
-                                    <button id="btnUseSettingsConfig" type="submit" class="btn btn-primary mt-2 mb-2">Use Settings</button>
+                                    <button id="btnCloseConfig" type="button" class="btn btn-warning mt-2 mb-2">Close</button>
+                                    <button id="btnResetSettingsConfig" type="button" class="btn btn-outline-primary mt-2 mb-2 mx-3">Reset</button>
+                                    <button id="btnUseSettingsConfig" type="button" class="btn btn-primary mt-2 mb-2">Use Settings</button>
                                 </div>
                             </div>                                
                         </form>  
@@ -127,7 +129,7 @@
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Metal Selection</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select id="metalSelection" class="form-select" aria-label="Metal Selection">
                                     <option value="10k White Gold">10k White Gold</option>
                                     <option value="10k Yellow Gold">10k Yellow Gold</option>
                                     <option value="10k Rose Gold">10k Rose Gold</option>
@@ -143,33 +145,33 @@
                             </div>
                             <div class="col">
                                 <label class="form-label">Metal Spot Price</label>
-                                <input type="number" name="spotPrice" class="form-control" placeholder="1850"
+                                <input id="metalSpotPrice" type="number" name="spotPrice" class="form-control" placeholder="1850" value="1850"
                                     aria-label="metal spot price" required>
                             </div>
                         </div>
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Metal Weight</label>
-                                <input type="number" name="metal weight" class="form-control" placeholder="5.0"
+                                <input id="metalWeight" type="number" name="metal weight" class="form-control" placeholder="5.0" value="5.0"
                                     aria-label="metal weight" required>
                             </div>
                             <div class="col">
                                 <label class="form-label">Num of Pieces</label>
-                                <input type="number" name="numberOfPieces" title="Number of pieces" class="form-control" placeholder="1"
+                                <input id="numberOfPieces" type="number" name="numberOfPieces" title="Number of pieces" class="form-control" placeholder="1" value="1"
                                     aria-label="number of pieces">
                             </div>
                         </div>
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Num melee stones</label>
-                                <input type="number" name="melee stone count" title="Number of melee stones" class="form-control" placeholder="5.0"
+                                <input type="numberMeleeStones" name="melee stone count" title="Number of melee stones" class="form-control" placeholder="0" value="0"
                                     aria-label="melee stone count" required>
                             </div>
                             <div class="col">
                                 <label class="form-label">Melee Setting Style</label>
-                                <select class="form-select" title="Melee setting style" aria-label="Melee Setting Style">
+                                <select id="meleeSettingStyle" class="form-select" title="Melee setting style" aria-label="Melee Setting Style">
                                     <option selected value="prong">prong</option>
-                                    <option value="channel/bezel">channel/bezel</option>
+                                    <option value="channel/bezel/bar">channel/bezel/bar</option>
                                     <option value="flat">flat</option>
                                     </select>
                             </div>
@@ -177,43 +179,45 @@
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Center Weight</label>
-                                <input type="number" name="centerWeight" class="form-control" placeholder="1.00"
+                                <input id="centerStoneWeight" type="number" name="centerWeight" class="form-control" placeholder="1.00" value="0"
                                     aria-label="Center Weight" required>
                             </div>
                             <div class="col">
                                 <label class="form-label">Num Large Accents</label>
-                                <input type="number" name="numberOfAccents" title="Number of Large Accent Stones" class="form-control" placeholder="1"
+                                <input id="numberLargeAccents" type="number" name="numberOfAccents" title="Number of Large Accent Stones" class="form-control" placeholder="1" value="0"
                                     aria-label="number of accents">
                             </div>
                         </div>
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Assembly Fees</label>
-                                <input type="number" name="assemblyFees" class="form-control" placeholder="0"
+                                <input id="assemblyFees" type="number" name="assemblyFees" class="form-control" placeholder="0" value="0"
                                     aria-label="assembly fees" required>
                             </div>
                             <div class="col">
-                                <label class="form-label">Accents Weight Each</label>
-                                <input type="number" name="accentWeightEach" class="form-control" placeholder="0"
+                                <label class="form-label">Accent Carat Each</label>
+                                <input id="accentsWeightEach" type="number" name="accentWeightEach" class="form-control" placeholder="0" value="0"
                                     aria-label="accent stones weight">
                             </div>
                         </div>
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Customer Stones</label>
-                                <input type="number" name="assemblyFees" class="form-control" placeholder="0"
-                                    aria-label="assembly fees" required>
+                                <select id="customerStonesFee" class="form-select" aria-label="Default select example">
+                                    <option selected value="0">No</option>
+                                    <option value="30">Yes</option>
+                                </select>
                             </div>
                             <div class="col">
                                 <label class="form-label">Parts Cost</label>
-                                <input type="number" name="partsCost" class="form-control" placeholder="0"
+                                <input id="partsCost" type="number" name="partsCost" class="form-control" placeholder="0" value="0"
                                     aria-label="parts cost">
                             </div>
                         </div>
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Design Type</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select id="designType" class="form-select" aria-label="Default select example">
                                     <option value="0">No Charge</option>
                                     <option selected value="325">$325 Regular Ring</option>
                                     <option value="450"> $450 Intricate Ring</option>
@@ -233,31 +237,31 @@
                             </div>
                             <div class="col">
                                 <label class="form-label">3D Scan</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>None</option>
+                                <select id="scanSelection" class="form-select" aria-label="3D Scan Selction">
+                                    <option selected value="0">None</option>
                                     <option value="100">Scan Ring</option>
                                     <option value="70">Scan Stone</option>
                                     <option value="170">Scan Ring & Stone</option>
-                                    </select>
+                                </select>
                             </div>
                         </div>
                         <hr class="bg-danger border-3 border-top border-primary">
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Melee Price</label>
-                                <input type="number" name="meleePrice" class="form-control" placeholder="0"
+                                <input type="number" name="meleePrice" class="form-control" placeholder="0" value="0"
                                     aria-label="melee stones price" required>
                             </div>
                             <div class="col">
                                 <label class="form-label">Accents Price</label>
-                                <input type="number" name="accentsPrice" class="form-control" placeholder="0"
+                                <input type="number" name="accentsPrice" class="form-control" placeholder="0" value="0"
                                     aria-label="accent stones price">
                             </div>
                         </div>
                         <div class="row mb-1">
                             <div class="col">
                                 <label class="form-label">Center Price</label>
-                                <input type="number" name="centerPrice" class="form-control" placeholder="0"
+                                <input type="number" name="centerPrice" class="form-control" placeholder="0" value="0"
                                     aria-label="center stone price" required>
                             </div>
                             <div class="col">
@@ -269,18 +273,18 @@
                     </form>
                     <hr class="bg-danger border-3 border-top border-primary">
                     <!-- === Display Results === -->
-                    <!--  -->
-                    <div class="alert alert-danger fade show invisible" id="alert" role="alert">
+                    <!--  invisible -->
+                    <div class="alert alert-danger fade show" id="alert" role="alert">
                         <h4 id="alertHeading" class="alert-heading">
                             <div class="row row-cols-1 row-cols-md-2 mb-2">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-6">
                                     <div class=" row ">
                                         <div class="d-flex col justify-content-end">
-                                            <label for="manufacturingTotal" class="col-form-label">Mount Total</label>
+                                            <label for="mountTotal" class="col-form-label">Mount Total</label>
                                         </div>
                                         <div class="col">
-                                            <input type="password" title="Manufacturing quote before sales tax" id="manufacturingTotal" class="form-control" aria-describedby="Manufacturing Total" disabled>
+                                            <h3 id="mountTotal" class="col-form-label resultsText">548</h3>
                                         </div>
                                         </div>
                                 </div>
@@ -294,7 +298,7 @@
                                             <label for="stonesTotal" class="col-form-label">Stones Total</label>
                                         </div>
                                         <div class="col">
-                                            <input type="number" title="Stones quote before sales tax" id="stonesTotal" class="form-control" aria-describedby="Stones Total" disabled>
+                                            <h3 id="stonesTotal" class="col-form-label">548</h3>
                                         </div>
                                         </div>
                                 </div>
@@ -308,7 +312,7 @@
                                             <label for="quoteTotal" class="col-form-label">Quote Total</label>
                                         </div>
                                         <div class="col">
-                                            <input type="number" title="Total quote before sales tax" id="quoteTotal" class="form-control" aria-describedby="Quote Total" disabled>
+                                            <h3 id="quoteTotal" class="col-form-label resultsText">548</h3>
                                         </div>
                                         </div>
                                 </div>
@@ -357,7 +361,10 @@
     </script>
     <script src="/js/site.js"></script>
     <script>
-        document.getElementById("btnToggleConfig").addEventListener("click",toggleConfig);
+        document.getElementById("btnToggleConfig").addEventListener("click", toggleConfig);
+        document.getElementById("btnCloseConfig").addEventListener("click", toggleConfig);
+        document.getElementById("btnResetSettingsConfig").addEventListener("click", resetSettingsConfig);
+        document.getElementById("btnUseSettingsConfig").addEventListener("click", useSettingsConfig);
         document.getElementById("btnQuote").addEventListener("click", getValues);
         document.getElementById("btnReset").addEventListener("click", resetForm);
         document.getElementById("btnToggleMeleePricing").addEventListener("click", toggleMeleePricing);

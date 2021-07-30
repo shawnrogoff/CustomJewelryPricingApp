@@ -9,7 +9,9 @@
     display: none;
 }
 
-
+.resultsText{
+    color: var(--primary-color);
+}
 
 
 /* === Google Fonts === */
