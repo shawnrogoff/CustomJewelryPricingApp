@@ -49,6 +49,14 @@ function resetForm(){
     document.getElementById("accentsPrice").value = "";
     document.getElementById("centerPrice").value = "";
 }
+function resetMeleePricingForm(){
+    document.getElementById("meleePriceGuideNumMeleeStones1").value = "";
+    document.getElementById("meleePriceGuideNumMeleeStones2").value = "";
+    document.getElementById("meleeDiameterSelection1").value = "0";
+    document.getElementById("meleeDiameterSelection2").value = "0";
+    document.getElementById("meleeQualitySelection1").value = "I1-SI2 Clarity G Color";
+    document.getElementById("meleeQualitySelection2").value = "I1-SI2 Clarity G Color";
+}
 // use melee pricing guide to calculate melee price
 // not done
 function calculateMeleePrice(){

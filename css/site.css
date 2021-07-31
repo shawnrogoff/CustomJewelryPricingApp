@@ -17,6 +17,10 @@
     background-color: var(--primary-color);
 }
 
+.btnSecondaryBG{
+    background-color: var(--secondary-color);
+}
+
 /* === Google Fonts === */
 .logoFont{
     font-family: 'Rubik', sans-serif;
