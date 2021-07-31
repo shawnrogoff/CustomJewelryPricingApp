@@ -8,12 +8,12 @@ function toggleConfig(){
 }
 // reset config settings to default
 function resetSettingsConfig(){
-    document.getElementById("meleeProngSettingFee").value = 5;
-    document.getElementById("meleeChannelBezelSettingFee").value = 8;
-    document.getElementById("meleeFlatSettingFee").value = 10;
-    document.getElementById("rhodiumPlatingFee").value = 35;
-    document.getElementById("ringScanFee").value = 100;
-    document.getElementById("stoneScanFee").value = 70;
+    document.getElementById("meleeProngSettingFee").value = "";
+    document.getElementById("meleeChannelBezelSettingFee").value = "";
+    document.getElementById("meleeFlatSettingFee").value = "";
+    document.getElementById("rhodiumPlatingFee").value = "";
+    document.getElementById("ringScanFee").value = "";
+    document.getElementById("stoneScanFee").value = "";
 }
 // use config settings
 function useSettingsConfig(){
@@ -38,12 +38,12 @@ function getValues(){
     
     let mountCost = parseFloat(calculateMounting());
 
-    let stonesCost = parseFloat(0);
+    let totalStonesCost = parseFloat(calculateStonesCost());
 
-    displayResults(mountCost, stonesCost);
+    displayResults(mountCost, totalStonesCost);
 }
 
-// calculate quote
+// calculations
 function calculateMounting(){
     // create an object for storing all our prices neatly
     let mountCost = {};
@@ -53,22 +53,64 @@ function calculateMounting(){
     mountCost.printingFee = calculatePrintingFee();
     mountCost.designFee = parseFloat(document.getElementById("designType").value);
     mountCost.customerStonesFee = parseFloat(document.getElementById("customerStonesFee").value);
-    mountCost.scanFee = parseFloat(document.getElementById("scanSelection").value);
-    mountCost.assemblyFee = parseFloat(document.getElementById("assemblyFees").value);
-    mountCost.partsCost = parseFloat(document.getElementById("partsCost").value);
     mountCost.boxFee = parseFloat(7);
 
+    // If user doesn't enter a value, then use the placeholder value
+    let ringScanFee = parseFloat(0);
+    if(document.getElementById("ringScanFee").value == ""){
+        ringScanFee = parseFloat(document.getElementById("ringScanFee").placeholder);
+    } else{
+        ringScanFee = parseFloat(document.getElementById("ringScanFee").value);
+    }
+    // If user doesn't enter a value, then use the placeholder value
+    let stoneScanFee = parseFloat(0);
+    if(document.getElementById("stoneScanFee").value == ""){
+        stoneScanFee = parseFloat(document.getElementById("stoneScanFee").placeholder);
+    } else{
+        stoneScanFee = parseFloat(document.getElementById("stoneScanFee").value);
+    }
+
+    let scanFee = parseFloat(0);
+    if (document.getElementById("scanSelection").value == "Scan Ring & Stone"){
+        scanFee = ringScanFee + stoneScanFee;
+    } else if (document.getElementById("scanSelection").value == "Scan Ring"){
+        scanFee = ringScanFee;
+    } else if (document.getElementById("scanSelection").value == "Scan Stone"){
+        scanFee = stoneScanFee;
+    }
+    
+    
+    mountCost.scanFee = parseFloat(scanFee);
+
+
+    // If user doesn't enter a value, then use the placeholder value
+    let assemblyFee = parseFloat(0);
+    if(document.getElementById("assemblyFees").value == ""){
+        assemblyFee = parseFloat(document.getElementById("assemblyFees").placeholder);
+    } else{
+        assemblyFee = parseFloat(document.getElementById("assemblyFees").value);
+    }
+    mountCost.assemblyFee = parseFloat(assemblyFee);
+
+    let partsCost = parseFloat(0);
+    if(document.getElementById("partsCost").value == ""){
+        partsCost = parseFloat(document.getElementById("partsCost").placeholder);
+    } else{
+        partsCost = parseFloat(document.getElementById("partsCost").value);
+    }
+    mountCost.partsCost = parseFloat(partsCost);
+    
     totalMountingCost = parseFloat(
-        mountCost.rhodiumPlatingFee.value + 
-        mountCost.metalCost.value + 
-        mountCost.settingFee.value + 
-        mountCost.printingFee.value + 
-        mountCost.designFee.value + 
-        mountCost.customerStonesFee.value + 
-        mountCost.scanFee.value + 
-        mountCost.assemblyFee.value + 
-        mountCost.partsCost.value + 
-        mountCost.boxFee.value
+        mountCost.rhodiumPlatingFee + 
+        mountCost.metalCost + 
+        mountCost.settingFee + 
+        mountCost.printingFee + 
+        mountCost.designFee + 
+        mountCost.customerStonesFee + 
+        mountCost.scanFee + 
+        mountCost.assemblyFee + 
+        mountCost.partsCost + 
+        mountCost.boxFee
         );
 
     return totalMountingCost;
@@ -80,9 +122,27 @@ function calculateMetalCost(){
     let retailMarkupOnMetal = parseFloat(2);
     // Get values from the form
     let metalSelection = document.getElementById("metalSelection").value;
-    let metalSpotPrice = parseFloat(document.getElementById("metalSpotPrice").value);
-    let metalWeight = parseFloat(document.getElementById("metalWeight").value);
-    let numberOfPieces = parseFloat(document.getElementById("numberOfPieces").value);
+
+    let metalSpotPrice = parseFloat(0);
+    if(document.getElementById("metalSpotPrice").value == ""){
+        metalSpotPrice = parseFloat(document.getElementById("metalSpotPrice").placeholder);
+    } else{
+        metalSpotPrice = parseFloat(document.getElementById("metalSpotPrice").value);
+    }
+
+    let metalWeight = parseFloat(0);
+    if(document.getElementById("metalWeight").value == ""){
+        metalWeight = parseFloat(document.getElementById("metalWeight").placeholder);
+    } else{
+        metalWeight = parseFloat(document.getElementById("metalWeight").value);
+    }
+
+    let numberOfPieces = parseFloat(0);
+    if(document.getElementById("numberOfPieces").value == ""){
+        numberOfPieces = parseFloat(document.getElementById("numberOfPieces").placeholder);
+    } else{
+        numberOfPieces = parseFloat(document.getElementById("numberOfPieces").value);
+    }
 
     let metalPerGramCost = parseFloat(0);
 
@@ -124,9 +184,24 @@ function calculateMetalCost(){
 }
 function calculateRhodiumPlatingFee(){
     let metalSelection = document.getElementById("metalSelection").value;
-    let numberOfPieces = parseFloat(document.getElementById("numberOfPieces").value);
-    let individualRhodiumPlatingFee = parseFloat(document.getElementById("rhodiumPlatingFee").value);
+    // If user does not enter a value, then use the placeholder value
+    let numberOfPieces = parseFloat(0);
+    if(document.getElementById("numberOfPieces").value == ""){
+        numberOfPieces = parseFloat(document.getElementById("numberOfPieces").placeholder);
+    } else{
+        numberOfPieces = parseFloat(document.getElementById("numberOfPieces").value);
+    }
+
+    // If user doesn't enter a value, then use the placeholder value
+    let individualRhodiumPlatingFee = parseFloat(0);
+    if(document.getElementById("rhodiumPlatingFee").value == ""){
+        individualRhodiumPlatingFee = parseFloat(document.getElementById("rhodiumPlatingFee").placeholder);
+    } else{
+        individualRhodiumPlatingFee = parseFloat(document.getElementById("rhodiumPlatingFee").value);
+    }
+
     let totalRhodiumPlatingFee = parseFloat(0);
+    
     // We want to charge if the metal is white gold
     if (metalSelection == "10k White Gold" || metalSelection == "14k White Gold" || metalSelection == "18k White Gold")
     {
@@ -135,10 +210,36 @@ function calculateRhodiumPlatingFee(){
     return totalRhodiumPlatingFee;
 }
 function calculateSettingFee(){
-    let meleeProngSettingFee = parseFloat(document.getElementById("meleeProngSettingFee").value);
-    let meleeChannelBezelSettingFee = parseFloat(document.getElementById("meleeChannelBezelSettingFee").value);
-    let meleeFlatSettingFee = parseFloat(document.getElementById("meleeFlatSettingFee").value);
-    let numberOfMeleeStones = parseFloat(document.getElementById("numberMeleeStones"));
+    // If user does not enter a value, then use the placeholder value
+    let meleeProngSettingFee = parseFloat(0);
+    if(document.getElementById("meleeProngSettingFee").value == ""){
+        meleeProngSettingFee = parseFloat(document.getElementById("meleeProngSettingFee").placeholder);
+    } else{
+        meleeProngSettingFee = parseFloat(document.getElementById("meleeProngSettingFee").value);
+    }
+    // If user does not enter a value, then use the placeholder value
+    let meleeChannelBezelSettingFee = parseFloat(0);
+    if(document.getElementById("meleeChannelBezelSettingFee").value == ""){
+        meleeChannelBezelSettingFee = parseFloat(document.getElementById("meleeChannelBezelSettingFee").placeholder);
+    } else{
+        meleeChannelBezelSettingFee = parseFloat(document.getElementById("meleeChannelBezelSettingFee").value);
+    }
+    // If user does not enter a value, then use the placeholder value
+    let meleeFlatSettingFee = parseFloat(0);
+    if(document.getElementById("meleeFlatSettingFee").value == ""){
+        meleeFlatSettingFee = parseFloat(document.getElementById("meleeFlatSettingFee").placeholder);
+    } else{
+        meleeFlatSettingFee = parseFloat(document.getElementById("meleeFlatSettingFee").value);
+    }
+
+    // If user does not enter a value, then use the placeholder value
+    let numberOfMeleeStones = parseFloat(0);
+    if(document.getElementById("numberMeleeStones").value == ""){
+        numberOfMeleeStones = parseFloat(document.getElementById("numberMeleeStones").placeholder);
+    } else{
+        numberOfMeleeStones = parseFloat(document.getElementById("numberMeleeStones").value);
+    }
+
     let meleeSettingChargePerStone = parseFloat(0);
     
     // Determine which value to use for melee stone pricing
@@ -161,123 +262,143 @@ function calculateSettingFee(){
     let centerSettingFee = parseFloat(0);
     let totalSettingFee = parseFloat(0);
 
-    meleeSettingFee = parseFloat(numberOfMeleeStones * meleeSettingChargePerSton);
+    meleeSettingFee = parseFloat(numberOfMeleeStones * meleeSettingChargePerStone);
 
     // Calculate setting fees for any larger accent stones
+    // If users do not enter a value, then use the placeholder value
+    let numberAccentStones = parseFloat(0);
+    if(document.getElementById("numberLargeAccents").value == ""){
+        numberAccentStones = parseFloat(document.getElementById("numberLargeAccents").placeholder);
+    } else{
+        numberAccentStones = parseFloat(document.getElementById("numberLargeAccents").value);
+    }
+    let accentStonesWeightEach = parseFloat(0);
+    if(document.getElementById("accentsWeightEach").value == ""){
+        accentStonesWeightEach = parseFloat(document.getElementById("accentsWeightEach").placeholder);
+    } else{
+        accentStonesWeightEach = parseFloat(document.getElementById("accentsWeightEach").value);
+    }
 
-    let numberAccentStones = parseFloat(document.getElementById("numberLargeAccents").value);
-    let accentStonesWeightEach = parseFloat(document.getElementById("accentsWeightEach").value);
     let accentSettingFeeEach = parseFloat(0);
 
-    
-// === check on javascript comparison operators and how they work === //
     if (accentStonesWeightEach <= 0.15)
     {
-        accentSettingFeeEach = meleeProngSettingFee;
+        accentSettingFeeEach = parseFloat(meleeProngSettingFee);
     }
     else if (accentStonesWeightEach > 0.15 && accentStonesWeightEach <= 0.25)
     {
-        accentSettingFeeEach = meleeChannelBezelSettingFee;
+        accentSettingFeeEach = parseFloat(meleeChannelBezelSettingFee);
     }
     else if (accentStonesWeightEach > 0.25 && accentStonesWeightEach <= 0.55)
     {
-        accentSettingFeeEach = 22;
+        accentSettingFeeEach = parseFloat(22);
     }
     else if (accentStonesWeightEach > 0.55 && accentStonesWeightEach <= 0.75)
     {
-        accentSettingFeeEach = 30;
+        accentSettingFeeEach = parseFloat(30);
     }
     else if (accentStonesWeightEach > 0.75 && accentStonesWeightEach <= 1.00)
     {
-        accentSettingFeeEach = 50;
+        accentSettingFeeEach = parseFloat(50);
     }
     else if (accentStonesWeightEach > 1.00 && accentStonesWeightEach <= 1.50)
     {
-        accentSettingFeeEach = 60;
+        accentSettingFeeEach = parseFloat(60);
     }
     else if (accentStonesWeightEach > 1.50 && accentStonesWeightEach <= 2.00)
     {
-        accentSettingFeeEach = 70;
+        accentSettingFeeEach = parseFloat(70);
     }
     else if (accentStonesWeightEach > 2.00 && accentStonesWeightEach <= 3.00)
     {
-        accentSettingFeeEach = 80;
+        accentSettingFeeEach = parseFloat(80);
     }
     else if (accentStonesWeightEach > 3.00 && accentStonesWeightEach <= 4.00)
     {
-        accentSettingFeeEach = 100;
+        accentSettingFeeEach = parseFloat(100);
     }
     else if (accentStonesWeightEach > 4.00 && accentStonesWeightEach <= 5.00)
     {
-        accentSettingFeeEach = 110;
+        accentSettingFeeEach = parseFloat(110);
     }
     else if (accentStonesWeightEach > 5.00)
     {
-        accentSettingFeeEach = 140;
+        accentSettingFeeEach = parseFloat(140);
     }
 
-    accentSettingFee = numberAccentStones * accentSettingFeeEach;
+    accentSettingFee = parseFloat(numberAccentStones * accentSettingFeeEach);
 
     // Calculate center setting fee
-
-    let centerStoneWeight = parseFloat(document.getElementById("centerStoneWeight").value);
+    // If users do not enter a value, then use the placeholder value
+    let centerStoneWeight = parseFloat(0);
+    if(document.getElementById("centerStoneWeight").value == ""){
+        centerStoneWeight = parseFloat(document.getElementById("centerStoneWeight").placeholder);
+    } else{
+        centerStoneWeight = parseFloat(document.getElementById("centerStoneWeight").value);
+    }
 
     if (centerStoneWeight <= 0.15)
     {
-        centerSettingFee = meleeProngSettingFee;
+        centerSettingFee = parseFloat(meleeProngSettingFee);
     }
     else if (centerStoneWeight > 0.15 && centerStoneWeight <= 0.25)
     {
-        centerSettingFee = meleeChannelBezelSettingFee;
+        centerSettingFee = parseFloat(meleeChannelBezelSettingFee);
     }
     else if (centerStoneWeight > 0.25 && centerStoneWeight <= 0.55)
     {
-        centerSettingFee = 22;
+        centerSettingFee = parseFloat(22);
     }
     else if (centerStoneWeight > 0.55 && centerStoneWeight <= 0.75)
     {
-        centerSettingFee = 30;
+        centerSettingFee = parseFloat(30);
     }
     else if (centerStoneWeight > 0.75 && centerStoneWeight <= 1.00)
     {
-        centerSettingFee = 50;
+        centerSettingFee = parseFloat(50);
     }
     else if (centerStoneWeight > 1.00 && centerStoneWeight <= 1.50)
     {
-        centerSettingFee = 60;
+        centerSettingFee = parseFloat(60);
     }
     else if (centerStoneWeight > 1.50 && centerStoneWeight <= 2.00)
     {
-        centerSettingFee = 70;
+        centerSettingFee = parseFloat(70);
     }
     else if (centerStoneWeight > 2.00 && centerStoneWeight <= 3.00)
     {
-        centerSettingFee = 80;
+        centerSettingFee = parseFloat(80);
     }
     else if (centerStoneWeight > 3.00 && centerStoneWeight <= 4.00)
     {
-        centerSettingFee = 100;
+        centerSettingFee = parseFloat(100);
     }
     else if (centerStoneWeight > 4.00 && centerStoneWeight <= 5.00)
     {
-        centerSettingFee = 110;
+        centerSettingFee = parseFloat(110);
     }
     else if (centerStoneWeight > 5.00)
     {
-        centerSettingFee = 140;
+        centerSettingFee = parseFloat(140);
     }
     else
     {
-        centerSettingFee = 0;
+        centerSettingFee = parseFloat(0);
     }
 
-    totalSettingFee = meleeSettingFee + accentSettingFee + centerSettingFee;
+    totalSettingFee = parseFloat(meleeSettingFee + accentSettingFee + centerSettingFee);
 
-    return totalSettingFee;
+    return parseFloat(totalSettingFee);
 }
 function calculatePrintingFee(){
     let printingFee = parseFloat(0);
-    let numberOfPieces = parseFloat(document.getElementById("numberOfPieces").value);
+    // If user does not enter a value, then use the placeholder value
+    let numberOfPieces = parseFloat(0);
+    if(document.getElementById("numberOfPieces").value == ""){
+        numberOfPieces = parseFloat(document.getElementById("numberOfPieces").placeholder);
+    } else{
+        numberOfPieces = parseFloat(document.getElementById("numberOfPieces").value);
+    }
 
     if (numberOfPieces == 1)
     {
@@ -290,12 +411,38 @@ function calculatePrintingFee(){
 
     return printingFee;
 }
+function calculateStonesCost(){
 
+    let meleePrice = parseFloat(0);
+    let accentsPrice = parseFloat(0);
+    let centerPrice = parseFloat(0);
+    
+    // If user doesn't enter a value, then use the placeholder value
+    if(document.getElementById("meleePrice").value == ""){
+        meleePrice = parseFloat(document.getElementById("meleePrice").placeholder);
+    } else{
+        meleePrice = parseFloat(document.getElementById("meleePrice").value);
+    }
+    if(document.getElementById("accentsPrice").value == ""){
+        accentsPrice = parseFloat(document.getElementById("accentsPrice").placeholder);
+    } else{
+        accentsPrice = parseFloat(document.getElementById("accentsPrice").value);
+    }
+    if(document.getElementById("centerPrice").value == ""){
+        centerPrice = parseFloat(document.getElementById("centerPrice").placeholder);
+    } else{
+        centerPrice = parseFloat(document.getElementById("centerPrice").value);
+    }
+
+    let totalStonesCost = parseFloat(meleePrice + accentsPrice + centerPrice);
+
+    return totalStonesCost;
+}
 
 // display results
 function displayResults(mountCost, stonesCost){
     document.getElementById("alert").classList.remove("invisible");
     document.getElementById("mountTotal").innerHTML = mountCost;
     document.getElementById("stonesTotal").innerHTML = stonesCost;
-    document.getElementById("quoteTotal").innerHTML = metalCost + stonesCost;
+    document.getElementById("quoteTotal").innerHTML = mountCost + stonesCost;
 }
