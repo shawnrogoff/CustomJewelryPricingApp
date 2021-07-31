@@ -192,16 +192,22 @@ function calculateMeleePrice(){
     // calculate total carat weight for options
     let meleeOptionOneTotalCaratWeight = parseFloat(meleePriceGuideNumMeleeStones1 * caratWeightEach1);
     let meleeOptionTwoTotalCaratWeight = parseFloat(meleePriceGuideNumMeleeStones2 * caratWeightEach2);
-    let meleeTotalCaratWeight = (meleeOptionOneTotalCaratWeight + meleeOptionTwoTotalCaratWeight);
+    // limit weight to two decimals
+    meleeOptionOneTotalCaratWeight = parseFloat(meleeOptionOneTotalCaratWeight.toFixed(2));
+    meleeOptionTwoTotalCaratWeight = parseFloat(meleeOptionTwoTotalCaratWeight.toFixed(2));
+
+    let meleeTotalCaratWeight = parseFloat(meleeOptionOneTotalCaratWeight + meleeOptionTwoTotalCaratWeight);
+    meleeTotalCaratWeight = parseFloat(meleeTotalCaratWeight.toFixed(2));
     // get stone qualities
     let meleeQualitySelection1 = document.getElementById("meleeQualitySelection1").value;
     let meleeQualitySelection2 = document.getElementById("meleeQualitySelection2").value;
-    let pricePerCaratOption1 = parseFloat(0);
-    let pricePerCaratOption2 = parseFloat(0);
+    let pricePerCaratOption1 = 0;
+    let pricePerCaratOption2 = 0;
+
     switch (meleeQualitySelection1) {
         case "I1-SI2 Clarity G Color":
             if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
-                pricePerCaratOption1 = parseFloat();
+                pricePerCaratOption1 = parseFloat(1655);
             } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
                 pricePerCaratOption1 = parseFloat(1455);
             } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
@@ -249,7 +255,7 @@ function calculateMeleePrice(){
     switch (meleeQualitySelection2) {
         case "I1-SI2 Clarity G Color":
             if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(1655);
             } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
                 pricePerCaratOption2 = parseFloat(1455);
             } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
@@ -299,7 +305,7 @@ function calculateMeleePrice(){
     let meleeOptionOneTotalPrice = parseFloat(Math.ceil(meleeOptionOneTotalCaratWeight * pricePerCaratOption1));
     let meleeOptionTwoTotalPrice = parseFloat(Math.ceil(meleeOptionTwoTotalCaratWeight * pricePerCaratOption2));
     // calculate total stone price and weight
-    let meleeTotalCalculatedPrice = parseFloat(meleeOptionOneTotalPrice + meleeOptionTwoTotalPrice);
+    let meleeTotalCalculatedPrice = parseFloat(Math.ceil(meleeOptionOneTotalPrice + meleeOptionTwoTotalPrice));
 
     // put values inside html
     document.getElementById("stoneOption1TotalWeight").innerHTML = `Weight: ${meleeOptionOneTotalCaratWeight}ctw`;
