@@ -13,6 +13,9 @@
     color: var(--primary-color);
 }
 
+.btnPrimaryBG{
+    background-color: var(--primary-color);
+}
 
 /* === Google Fonts === */
 .logoFont{

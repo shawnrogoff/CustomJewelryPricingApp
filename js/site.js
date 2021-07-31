@@ -35,6 +35,241 @@ function toggleCustomerGold(){
 function resetForm(){
     document.getElementById("alert").classList.add("invisible");
 }
+// use melee pricing guide to calculate melee price
+function calculateMeleePricing(){
+    // get numbers of stones
+    // If user doesn't enter a value, then use the placeholder value
+    let meleePriceGuideNumMeleeStones1 = parseFloat(0);
+    if(document.getElementById("meleePriceGuideNumMeleeStones1").value == ""){
+        meleePriceGuideNumMeleeStones1 = parseFloat(document.getElementById("meleePriceGuideNumMeleeStones1").placeholder);
+    } else{
+        meleePriceGuideNumMeleeStones1 = parseFloat(document.getElementById("meleePriceGuideNumMeleeStones1").value);
+    }
+    // If user doesn't enter a value, then use the placeholder value
+    let meleePriceGuideNumMeleeStones2 = parseFloat(0);
+    if(document.getElementById("meleePriceGuideNumMeleeStones2").value == ""){
+        meleePriceGuideNumMeleeStones2 = parseFloat(document.getElementById("meleePriceGuideNumMeleeStones2").placeholder);
+    } else{
+        meleePriceGuideNumMeleeStones2 = parseFloat(document.getElementById("meleePriceGuideNumMeleeStones2").value);
+    }
+    // get stone diameters
+    let stonesDiameter1 = document.getElementById("meleeDiameterSelection1").value;
+    let stonesDiameter2 = document.getElementById("meleeDiameterSelection2").value;
+    
+    // set carat weight each based on selected diameter
+    let caratWeightEach1 = parseFloat(0);
+    let caratWeightEach2 = parseFloat(0);
+
+    switch (stonesDiameter1) {
+        case 0.9:
+            caratWeightEach1 = parseFloat(0.004);
+            break;
+        case 1.0:
+            caratWeightEach1 = parseFloat(0.005);
+            break;
+        case 1.1:
+            caratWeightEach1 = parseFloat(0.0065);
+            break;
+        case 1.2:
+            caratWeightEach1 = parseFloat(0.0075);
+            break;
+        case 1.3:
+            caratWeightEach1 = parseFloat(0.01);
+            break;
+        case 1.4:
+            caratWeightEach1 = parseFloat(0.0125);
+            break;
+        case 1.5:
+            caratWeightEach1 = parseFloat(0.015);
+            break;
+        case 1.75:
+            caratWeightEach1 = parseFloat(0.02);
+            break;
+        case 1.8:
+            caratWeightEach1 = parseFloat(0.025);
+            break;
+        case 2.0:
+            caratWeightEach1 = parseFloat(0.03);
+            break;
+        case 2.2:
+            caratWeightEach1 = parseFloat(0.04);
+            break;
+        case 2.4:
+            caratWeightEach1 = parseFloat(0.05);
+            break;
+        case 2.5:
+            caratWeightEach1 = parseFloat(0.06);
+            break;
+        case 2.7:
+            caratWeightEach1 = parseFloat(0.07);
+            break;
+        case 2.8:
+            caratWeightEach1 = parseFloat(0.08);
+            break;
+        case 3.0:
+            caratWeightEach1 = parseFloat(0.10);
+            break;
+        case 3.2:
+            caratWeightEach1 = parseFloat(0.12);
+            break;
+        default:
+            break;
+    }
+    switch (stonesDiameter2) {
+        case 0.9:
+            caratWeightEach2 = parseFloat(0.004);
+            break;
+        case 1.0:
+            caratWeightEach2 = parseFloat(0.005);
+            break;
+        case 1.1:
+            caratWeightEach2 = parseFloat(0.0065);
+            break;
+        case 1.2:
+            caratWeightEach2 = parseFloat(0.0075);
+            break;
+        case 1.3:
+            caratWeightEach2 = parseFloat(0.01);
+            break;
+        case 1.4:
+            caratWeightEach2 = parseFloat(0.0125);
+            break;
+        case 1.5:
+            caratWeightEach2 = parseFloat(0.015);
+            break;
+        case 1.75:
+            caratWeightEach2 = parseFloat(0.02);
+            break;
+        case 1.8:
+            caratWeightEach2 = parseFloat(0.025);
+            break;
+        case 2.0:
+            caratWeightEach2 = parseFloat(0.03);
+            break;
+        case 2.2:
+            caratWeightEach2 = parseFloat(0.04);
+            break;
+        case 2.4:
+            caratWeightEach2 = parseFloat(0.05);
+            break;
+        case 2.5:
+            caratWeightEach2 = parseFloat(0.06);
+            break;
+        case 2.7:
+            caratWeightEach2 = parseFloat(0.07);
+            break;
+        case 2.8:
+            caratWeightEach2 = parseFloat(0.08);
+            break;
+        case 3.0:
+            caratWeightEach2 = parseFloat(0.10);
+            break;
+        case 3.2:
+            caratWeightEach2 = parseFloat(0.12);
+            break;
+        default:
+            break;
+    }
+    // calculate total carat weight for options
+    let meleeOptionOneTotalCaratWeight = parseFloat(meleePriceGuideNumMeleeStones1 * caratWeightEach1);
+    let meleeOptionTwoTotalCaratWeight = parseFloat(meleePriceGuideNumMeleeStones2 * caratWeightEach2);
+    // get stone qualities
+    let meleeQualitySelction1 = document.getElementById("meleeQualitySelction1").value;
+    let meleeQualitySelction2 = document.getElementById("meleeQualitySelction2").value;
+    let pricePerCaratOption1 = parseFloat(0);
+    let pricePerCaratOption2 = parseFloat(0);
+    switch (meleeQualitySelction1) {
+        case "I1-SI2 Clarity G Color":
+            if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
+                pricePerCaratOption1 = parseFloat();
+            }
+            break;
+        case "SI1 Clarity G-H Color":
+            if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
+                pricePerCaratOption1 = parseFloat();
+            }
+            break;
+        case "VS Clarity F Color":
+            if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
+                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
+                pricePerCaratOption1 = parseFloat();
+            }
+            break;
+        default:
+            break;
+    }
+    switch (meleeQualitySelction2) {
+        case "I1-SI2 Clarity G Color":
+            if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat();
+            }
+            break;
+        case "SI1 Clarity G-H Color":
+            if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat();
+            }
+            break;
+        case "VS Clarity F Color":
+            if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat();
+            }
+            break;
+        default:
+            break;
+    }
+
+    // calculate each stone option's price
+    let meleeOptionOneTotalPrice = parseFloat(meleeOptionOneTotalCaratWeight * pricePerCaratOption1);
+    let meleeOptionTwoTotalPrice = parseFloat(meleeOptionTwoTotalCaratWeight * pricePerCaratOption2);
+    // calculate total stone price and weight
+    let meleeTotalCalculatedPrice = parseFloat(meleeOptionsOneTotalPrice * )
+
+    // put values inside html
+
+    // add values to element's value attribute
+    //element.style.backgroundColor = "red";
+}
+
+
+// inject calculated melee price into input for melee stones
+function useMeleePrice(){
+
+}
 
 // === Actual App Logic Starts Here === //
 // get values from form inputs
