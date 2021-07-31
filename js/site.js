@@ -21,7 +21,11 @@ function useSettingsConfig(){
 }
 // toggle melee pricing options
 function toggleMeleePricing(){
-    alert("You clicked to show melee pricing!");
+    if (document.getElementById("meleeDiamondPricingGuide").classList.contains("invisible")){
+        document.getElementById("meleeDiamondPricingGuide").classList.remove("invisible");
+    } else {
+        document.getElementById("meleeDiamondPricingGuide").classList.add("invisible");
+    }
 }
 // toggle melee pricing options
 function toggleCustomerGold(){

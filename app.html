@@ -121,8 +121,56 @@
                         </form>  
                     </div>
                 </div>
+                <!-- invisible -->
+                <div id="meleeDiamondPricingGuide" class="row ">
+                    <h1 class="text-center">Round Diamond Melee Pricing</h1>
+                    <div class="row row-cols-1 row-cols-md-2">
+                        <div class="col-md-2"></div>
+                        <div class="col col-md-4 justify-content-center text-center">
+                            <h2>Stones Option 1</h2>
+                                <label class="form-label">Number Melee Stones</label>
+                                <input id="meleePriceGuideNumMeleeStones1" type="number" name="Number Melee Stones Pricing Guide" class="form-control" placeholder="0"
+                                    aria-label="Number Melee Stones One" required>
+                                    <label class="form-label">Stone Diameter (mm)</label>
+                                <select id="scanSelection" class="form-select" aria-label="3D Scan Selction">
+                                    <option selected value="0">None</option>
+                                    <option>Scan Ring</option>
+                                    <option>Scan Stone</option>
+                                    <option>Scan Ring & Stone</option>
+                                </select>
+                                <label class="form-label">Melee Quality</label>
+                                <select id="meleeQualitySelction1" class="form-select" aria-label="3D Scan Selction">
+                                    <option selected>I1-SI2 Clarity G Color</option>
+                                    <option>SI1 Clarity G-H Color</option>
+                                    <option>VS Clarity F Color</option>
+                                </select>
+                        </div>
+                        <div class="col-md-4 justify-content-center text-center">
+                            <h2>Stones Option 2</h2>
+                                <label class="form-label">Metal Spot Price</label>
+                                <input id="metalSpotPrice" type="number" name="spotPrice" class="form-control" placeholder="1850"
+                                    aria-label="metal spot price" required>
+                                    <label class="form-label">3D Scan</label>
+                                <select id="scanSelection" class="form-select" aria-label="3D Scan Selction">
+                                    <option selected value="0">None</option>
+                                    <option>Scan Ring</option>
+                                    <option>Scan Stone</option>
+                                    <option>Scan Ring & Stone</option>
+                                </select>
+                                <label class="form-label">3D Scan</label>
+                                <select id="scanSelection" class="form-select" aria-label="3D Scan Selction">
+                                    <option selected value="0">None</option>
+                                    <option>Scan Ring</option>
+                                    <option>Scan Stone</option>
+                                    <option>Scan Ring & Stone</option>
+                                </select>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
                 <hr class="bg-danger border-2 border-top border-primary">
                 <!-- === Pricing Section === -->
+                
                 <div class="container">
                     <h1 class="text-center mb-3">Price Estimator</h1>
                     <form action="#">
