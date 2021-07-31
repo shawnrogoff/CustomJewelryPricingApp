@@ -33,10 +33,25 @@ function toggleCustomerGold(){
 }
 // reset the form
 function resetForm(){
+    // hide results section
     document.getElementById("alert").classList.add("invisible");
+    // set all inputs to empty strings ready for the next quote
+    document.getElementById("metalSpotPrice").value = "";
+    document.getElementById("metalWeight").value = "";
+    document.getElementById("numberOfPieces").value = "";
+    document.getElementById("numberMeleeStones").value = "";
+    document.getElementById("centerStoneWeight").value = "";
+    document.getElementById("numberLargeAccents").value = "";
+    document.getElementById("assemblyFees").value = "";
+    document.getElementById("accentsWeightEach").value = "";
+    document.getElementById("partsCost").value = "";
+    document.getElementById("meleePrice").value = "";
+    document.getElementById("accentsPrice").value = "";
+    document.getElementById("centerPrice").value = "";
 }
 // use melee pricing guide to calculate melee price
-function calculateMeleePricing(){
+// not done
+function calculateMeleePrice(){
     // get numbers of stones
     // If user doesn't enter a value, then use the placeholder value
     let meleePriceGuideNumMeleeStones1 = parseFloat(0);
@@ -52,9 +67,13 @@ function calculateMeleePricing(){
     } else{
         meleePriceGuideNumMeleeStones2 = parseFloat(document.getElementById("meleePriceGuideNumMeleeStones2").value);
     }
+    // calculate total number of melee stones, and stick this number into a hidden html element for later
+    let totalNumberMeleeStonesFromPricingGuide = parseFloat(meleePriceGuideNumMeleeStones1 + meleePriceGuideNumMeleeStones2);
+    document.getElementById("totalNumberMeleeStonesFromPricingGuide").innerHTML = totalNumberMeleeStonesFromPricingGuide;
+    
     // get stone diameters
-    let stonesDiameter1 = document.getElementById("meleeDiameterSelection1").value;
-    let stonesDiameter2 = document.getElementById("meleeDiameterSelection2").value;
+    let stonesDiameter1 = parseFloat(document.getElementById("meleeDiameterSelection1").value);
+    let stonesDiameter2 = parseFloat(document.getElementById("meleeDiameterSelection2").value);
     
     // set carat weight each based on selected diameter
     let caratWeightEach1 = parseFloat(0);
@@ -173,17 +192,18 @@ function calculateMeleePricing(){
     // calculate total carat weight for options
     let meleeOptionOneTotalCaratWeight = parseFloat(meleePriceGuideNumMeleeStones1 * caratWeightEach1);
     let meleeOptionTwoTotalCaratWeight = parseFloat(meleePriceGuideNumMeleeStones2 * caratWeightEach2);
+    let meleeTotalCaratWeight = (meleeOptionOneTotalCaratWeight + meleeOptionTwoTotalCaratWeight);
     // get stone qualities
-    let meleeQualitySelction1 = document.getElementById("meleeQualitySelction1").value;
-    let meleeQualitySelction2 = document.getElementById("meleeQualitySelction2").value;
+    let meleeQualitySelection1 = document.getElementById("meleeQualitySelection1").value;
+    let meleeQualitySelection2 = document.getElementById("meleeQualitySelection2").value;
     let pricePerCaratOption1 = parseFloat(0);
     let pricePerCaratOption2 = parseFloat(0);
-    switch (meleeQualitySelction1) {
+    switch (meleeQualitySelection1) {
         case "I1-SI2 Clarity G Color":
             if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
                 pricePerCaratOption1 = parseFloat();
             } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
-                pricePerCaratOption1 = parseFloat();
+                pricePerCaratOption1 = parseFloat(1455);
             } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
                 pricePerCaratOption1 = parseFloat();
             } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
@@ -210,17 +230,28 @@ function calculateMeleePricing(){
                 pricePerCaratOption1 = parseFloat();
             } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
                 pricePerCaratOption1 = parseFloat();
+            }
+            break;
+        case "Lab Grown (CVD VS/ F)":
+            if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat();
             }
             break;
         default:
             break;
     }
-    switch (meleeQualitySelction2) {
+    switch (meleeQualitySelection2) {
         case "I1-SI2 Clarity G Color":
             if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
                 pricePerCaratOption2 = parseFloat();
             } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(1455);
             } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
                 pricePerCaratOption2 = parseFloat();
             } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
@@ -239,6 +270,17 @@ function calculateMeleePricing(){
             }
             break;
         case "VS Clarity F Color":
+            if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
+                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat();
+            }
+            break;
+        case "Lab Grown (CVD VS/ F)":
             if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
                 pricePerCaratOption2 = parseFloat();
             } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
@@ -254,21 +296,29 @@ function calculateMeleePricing(){
     }
 
     // calculate each stone option's price
-    let meleeOptionOneTotalPrice = parseFloat(meleeOptionOneTotalCaratWeight * pricePerCaratOption1);
-    let meleeOptionTwoTotalPrice = parseFloat(meleeOptionTwoTotalCaratWeight * pricePerCaratOption2);
+    let meleeOptionOneTotalPrice = parseFloat(Math.ceil(meleeOptionOneTotalCaratWeight * pricePerCaratOption1));
+    let meleeOptionTwoTotalPrice = parseFloat(Math.ceil(meleeOptionTwoTotalCaratWeight * pricePerCaratOption2));
     // calculate total stone price and weight
-    let meleeTotalCalculatedPrice = parseFloat(meleeOptionsOneTotalPrice * )
+    let meleeTotalCalculatedPrice = parseFloat(meleeOptionOneTotalPrice + meleeOptionTwoTotalPrice);
 
     // put values inside html
-
-    // add values to element's value attribute
-    //element.style.backgroundColor = "red";
+    document.getElementById("stoneOption1TotalWeight").innerHTML = `Weight: ${meleeOptionOneTotalCaratWeight}ctw`;
+    document.getElementById("stoneOption1TotalPrice").innerHTML = `Price: ${meleeOptionOneTotalPrice}`;
+    document.getElementById("stoneOption2TotalWeight").innerHTML = `Weight: ${meleeOptionTwoTotalCaratWeight}ctw`;
+    document.getElementById("stoneOption2TotalPrice").innerHTML = `Price: ${meleeOptionTwoTotalPrice}`;
+    
+    document.getElementById("totalWeightMeleePricingGuide").innerHTML = meleeTotalCaratWeight;
+    document.getElementById("totalPriceMeleePricingGuide").innerHTML = meleeTotalCalculatedPrice;
 }
-
 
 // inject calculated melee price into input for melee stones
 function useMeleePrice(){
-
+    let meleePriceString = document.getElementById("totalPriceMeleePricingGuide").textContent;
+    let meleeTotalCalculatedPrice = parseFloat(meleePriceString);
+    document.getElementById("meleePrice").value = meleeTotalCalculatedPrice;
+    
+    let numberMeleeStones = parseFloat(document.getElementById("totalNumberMeleeStonesFromPricingGuide").innerHTML);
+    document.getElementById("numberMeleeStones").value = numberMeleeStones;
 }
 
 // === Actual App Logic Starts Here === //

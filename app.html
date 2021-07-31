@@ -121,8 +121,8 @@
                         </form>  
                     </div>
                 </div>
-                <!-- invisible -->
-                <div id="meleeDiamondPricingGuide" class="row ">
+                <!--  -->
+                <div id="meleeDiamondPricingGuide" class="row invisible">
                     <h1 class="text-center">Round Diamond Melee Pricing</h1>
                     <div class="row row-cols-1 row-cols-md-2">
                         <div class="col-md-2"></div>
@@ -137,12 +137,27 @@
                                     <option>0.9</option>
                                     <option>1.0</option>
                                     <option>1.1</option>
+                                    <option>1.2</option>
+                                    <option>1.3</option>
+                                    <option>1.4</option>
+                                    <option>1.5</option>
+                                    <option>1.7</option>
+                                    <option>1.8</option>
+                                    <option>2.0</option>
+                                    <option>2.2</option>
+                                    <option>2.4</option>
+                                    <option>2.5</option>
+                                    <option>2.7</option>
+                                    <option>2.8</option>
+                                    <option>3.0</option>
+                                    <option>3.2</option>
                                 </select>
                                 <label class="form-label">Melee Quality</label>
-                                <select id="meleeQualitySelction1" class="form-select" aria-label="3D Scan Selction">
+                                <select id="meleeQualitySelection1" class="form-select" aria-label="3D Scan Selction">
                                     <option selected>I1-SI2 Clarity G Color</option>
                                     <option>SI1 Clarity G-H Color</option>
                                     <option>VS Clarity F Color</option>
+                                    <option>Lab Grown (CVD VS/ F)</option>
                                 </select>
                         </div>
                         <div class="col-md-4 justify-content-center text-center mt-2">
@@ -156,19 +171,38 @@
                                 <option>0.9</option>
                                 <option>1.0</option>
                                 <option>1.1</option>
+                                <option>1.2</option>
+                                <option>1.3</option>
+                                <option>1.4</option>
+                                <option>1.5</option>
+                                <option>1.7</option>
+                                <option>1.8</option>
+                                <option>2.0</option>
+                                <option>2.2</option>
+                                <option>2.4</option>
+                                <option>2.5</option>
+                                <option>2.7</option>
+                                <option>2.8</option>
+                                <option>3.0</option>
+                                <option>3.2</option>
                             </select>
                             <label class="form-label">Melee Quality</label>
-                            <select id="meleeQualitySelction2" class="form-select" aria-label="3D Scan Selction">
+                            <select id="meleeQualitySelection2" class="form-select" aria-label="3D Scan Selction">
                                 <option selected>I1-SI2 Clarity G Color</option>
                                 <option>SI1 Clarity G-H Color</option>
                                 <option>VS Clarity F Color</option>
+                                <option>Lab Grown (CVD VS/ F)</option>
                             </select>
                         </div>
-                        <div class="col-md-2"></div>
+                        <!-- hidden element -->
+                        <div class="col-md-2">
+                            <p id="totalNumberMeleeStonesFromPricingGuide" style="display:none;"></p>
+                        </div>
+                        <!-- hidden element -->
                     </div>
                     <div class="row">
                         <div class="col d-flex justify-content-center mt-3">
-                            <button id="btnToggleConfig" title="Show configuration options" type="button" class="btn btn-success btn-lg btnPrimaryBG" >Get Price</i></button>
+                            <button id="btnGetMeleePrice" title="Show configuration options" type="button" class="btn btn-success btn-lg btnPrimaryBG" >Get Price</i></button>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -177,7 +211,7 @@
                                 <h4 id="stoneOption1TotalWeight">Weight: 0.00ctw</h4>
                             </div>
                             <div class="row">
-                                <h4 id="stoneOption1TotalWeight">Price: $0.00</h4>
+                                <h4 id="stoneOption1TotalPrice">Price: $0.00</h4>
                             </div>
                         </div>
                         <div class="col text-center">
@@ -185,15 +219,15 @@
                                 <h4 id="stoneOption2TotalWeight">Weight: 0.00ctw</h4>
                             </div>
                             <div class="row">
-                                <h4 id="stoneOption2TotalWeight">Price: $0.00</h4>
+                                <h4 id="stoneOption2TotalPrice">Price: $0.00</h4>
                             </div>
                         </div>
                     </div>
                     <div class="row text-center">
                         <div class="col-md-3"></div>
                         <div class="col-md-6 p-3 bg-light">
-                            <h2 id="totalWeightMeleePricingGuide">Total Weight: 0.00ctw</h2>
-                            <h2 id="totalPriceMeleePricingGuide">Total Price: $0.00</h2>
+                            <h2>Total Weight: </h2><h2 id="totalWeightMeleePricingGuide"></h2><h2>ctw</h2>
+                            <h2>Total Price: $</h2><h2 id="totalPriceMeleePricingGuide"></h2>
                         </div>
                         <div class="col-md-3"></div>
                     </div>
@@ -462,8 +496,8 @@
         document.getElementById("btnCloseMeleePricing").addEventListener("click", toggleMeleePricing);
         document.getElementById("btnToggleMeleePricing").addEventListener("click", toggleMeleePricing);
         document.getElementById("btnToggleCustomerGold").addEventListener("click", toggleCustomerGold);
+        document.getElementById("btnGetMeleePrice").addEventListener("click", calculateMeleePrice);
         document.getElementById("btnUseMeleePrice").addEventListener("click", useMeleePrice);
-        document.getElementById("btnUseMeleePrice").addEventListener("click", calculateMeleePricing);
     </script> 
 </body>
 </html>
