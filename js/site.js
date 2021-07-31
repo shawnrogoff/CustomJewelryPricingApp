@@ -218,43 +218,51 @@ function calculateMeleePrice(){
                 pricePerCaratOption1 = parseFloat(1655);
             } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
                 pricePerCaratOption1 = parseFloat(1455);
-            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
-                pricePerCaratOption1 = parseFloat();
-            } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
-                pricePerCaratOption1 = parseFloat();
+            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.5) {
+                pricePerCaratOption1 = parseFloat(1500);
+            } else if (stonesDiameter1 >= 2.7 && stonesDiameter1 <= 2.8) {
+                pricePerCaratOption1 = parseFloat(1850);
+            } else if (stonesDiameter1 >= 3.0 && stonesDiameter1 <= 3.2) {
+                pricePerCaratOption1 = parseFloat(1875);
             }
             break;
         case "SI1 Clarity G-H Color":
             if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
-                pricePerCaratOption1 = parseFloat();
+                pricePerCaratOption1 = parseFloat(2050);
             } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
-                pricePerCaratOption1 = parseFloat();
-            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
-                pricePerCaratOption1 = parseFloat();
-            } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
-                pricePerCaratOption1 = parseFloat();
+                pricePerCaratOption1 = parseFloat(1950);
+            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.5) {
+                pricePerCaratOption1 = parseFloat(2000);
+            } else if (stonesDiameter1 >= 2.7 && stonesDiameter1 <= 2.8) {
+                pricePerCaratOption1 = parseFloat(2400);
+            } else if (stonesDiameter1 >= 3.0 && stonesDiameter1 <= 3.2) {
+                pricePerCaratOption1 = parseFloat(2450);
             }
             break;
         case "VS Clarity F Color":
             if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
-                pricePerCaratOption1 = parseFloat();
+                pricePerCaratOption1 = parseFloat(2200);
             } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
-                pricePerCaratOption1 = parseFloat();
-            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.7) {
-                pricePerCaratOption1 = parseFloat();
-            } else if (stonesDiameter1 >= 2.8 && stonesDiameter1 <= 3.2) {
-                pricePerCaratOption1 = parseFloat();
+                pricePerCaratOption1 = parseFloat(2100);
+            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.5) {
+                pricePerCaratOption1 = parseFloat(2150);
+            } else if (stonesDiameter1 >= 2.7 && stonesDiameter1 <= 2.8) {
+                pricePerCaratOption1 = parseFloat(2685);
+            } else if (stonesDiameter1 >= 3.0 && stonesDiameter1 <= 3.2) {
+                pricePerCaratOption1 = parseFloat(2700);
             }
             break;
         case "Lab Grown (CVD VS/ F)":
-            if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
-                pricePerCaratOption2 = parseFloat();
+            if (stonesDiameter1 >= 0.9 && stonesDiameter1 <= 1.2){
+                pricePerCaratOption1 = parseFloat(975);
+            } else if (stonesDiameter1 >= 1.3 && stonesDiameter1 <= 2.0) {
+                pricePerCaratOption1 = parseFloat(885);
+            } else if (stonesDiameter1 >= 2.2 && stonesDiameter1 <= 2.5) {
+                pricePerCaratOption1 = parseFloat(150);
+            } else if (stonesDiameter1 >= 2.7 && stonesDiameter1 <= 2.8) {
+                pricePerCaratOption1 = parseFloat(1050);
+            } else if (stonesDiameter1 >= 3.0 && stonesDiameter1 <= 3.2) {
+                pricePerCaratOption1 = parseFloat(1275);
             }
             break;
         default:
@@ -263,46 +271,54 @@ function calculateMeleePrice(){
     switch (meleeQualitySelection2) {
         case "I1-SI2 Clarity G Color":
             if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
-                pricePerCaratOption2 = parseFloat(1655);
+                pricePerCaratOption2 = parseFloat(1650);
             } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
                 pricePerCaratOption2 = parseFloat(1455);
-            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
-                pricePerCaratOption2 = parseFloat();
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.5) {
+                pricePerCaratOption2 = parseFloat(1500);
+            } else if (stonesDiameter2 >= 2.7 && stonesDiameter2 <= 2.8) {
+                pricePerCaratOption2 = parseFloat(1850);
+            }else if (stonesDiameter2 >= 3.0 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat(1875);
             }
             break;
         case "SI1 Clarity G-H Color":
             if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(2050);
             } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(1950);
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.5) {
+                pricePerCaratOption2 = parseFloat(2000);
+            } else if (stonesDiameter2 >= 2.7 && stonesDiameter2 <= 2.8) {
+                pricePerCaratOption2 = parseFloat(2400);
+            }else if (stonesDiameter2 >= 3.0 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat(2450);
             }
             break;
         case "VS Clarity F Color":
             if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(2200);
             } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(2100);
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.5) {
+                pricePerCaratOption2 = parseFloat(2150);
+            } else if (stonesDiameter2 >= 2.7 && stonesDiameter2 <= 2.8) {
+                pricePerCaratOption2 = parseFloat(2685);
+            } else if (stonesDiameter2 >= 3.0 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat(2700);
             }
             break;
         case "Lab Grown (CVD VS/ F)":
             if (stonesDiameter2 >= 0.9 && stonesDiameter2 <= 1.2){
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(975);
             } else if (stonesDiameter2 >= 1.3 && stonesDiameter2 <= 2.0) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.7) {
-                pricePerCaratOption2 = parseFloat();
-            } else if (stonesDiameter2 >= 2.8 && stonesDiameter2 <= 3.2) {
-                pricePerCaratOption2 = parseFloat();
+                pricePerCaratOption2 = parseFloat(885);
+            } else if (stonesDiameter2 >= 2.2 && stonesDiameter2 <= 2.5) {
+                pricePerCaratOption2 = parseFloat(1050);
+            } else if (stonesDiameter2 >= 2.7 && stonesDiameter2 <= 2.8) {
+                pricePerCaratOption2 = parseFloat(1050);
+            } else if (stonesDiameter2 >= 3.0 && stonesDiameter2 <= 3.2) {
+                pricePerCaratOption2 = parseFloat(1275);
             }
             break;
         default:
