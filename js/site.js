@@ -109,7 +109,7 @@ function calculateMeleePrice(){
         case 1.5:
             caratWeightEach1 = parseFloat(0.015);
             break;
-        case 1.75:
+        case 1.7:
             caratWeightEach1 = parseFloat(0.02);
             break;
         case 1.8:
